@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot name="two_cubes" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find qbmove_example)/urdf/cube.urdf.xacro"/>
+
+    <link name="world"/>
+
+    <joint name="cube1_ground" type="fixed">
+        <parent link="world"/>
+        <child link="cube1_cube"/>
+        <origin
+                xyz="0.1 0 0.1"
+                rpy="0 0 0"/>
+    </joint>
+
+    <joint name="cube2_ground" type="fixed">
+        <parent link="world"/>
+        <child link="cube2_cube"/>
+        <origin
+                xyz="-0.1 0 0.1"
+                rpy="0 0 0"/>
+    </joint>
+
+    <cube name="cube1"/>
+
+    <cube name="cube2"/>
+
+    <gazebo>
+        <plugin name="qbmove_1" filename="libqbmove_plugin.so">
+            <joint>cube1_joint</joint>
+            <command_topic>/qbmove_1/command</command_topic>
+            <pos_topic>/qbmove_1/position</pos_topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="qbmove_2" filename="libqbmove_plugin.so">
+            <joint>cube2_joint</joint>
+            <command_topic>/qbmove_2/command</command_topic>
+            <pos_topic>/qbmove_2/position</pos_topic>
+        </plugin>
+    </gazebo>
+
+</robot>

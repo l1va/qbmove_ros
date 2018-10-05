@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- start gazebo server with empty world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+  </include>
+
+  <!-- load robot urdf as parameter -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find qbmove_example)/robot/two_cubes.urdf.xacro" />
+
+  <!-- add robot from parameter to gazebo world( -z flag is z coordinate to set robot mass center)  -->
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
+        args=" -urdf -model two_cubes -param robot_description -z 0.1" respawn="false" output="screen" />
+
+  <!-- calculate, publish and remap joint_states -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/qbmove/joint_states" />
+  </node>
+
+</launch>
+
