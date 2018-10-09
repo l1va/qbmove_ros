@@ -1,0 +1,19 @@
+<launch>
+
+  <node name="qb_device_communication_handler" pkg="qb_device_driver" type="qb_device_communication_handler" respawn="true" output="screen"/>
+
+  <node name="qb_topics_motor_2" pkg="qb_real" type="qb_topics_motor.py"  output="screen">
+	<param name="id" value="2" type="int" />
+	<param name="command_topic" value="/qbmove_2/command" type="string" />
+	<param name="pos_topic" value="/qbmove_2/position" type="string" />
+
+  </node>
+<!--
+  <node name="qb_topics_motor_1" pkg="qb_real" type="qb_topics_motor.py"  output="screen">
+        <param name="id" value="1" type="int" />
+        <param name="command_topic" value="/qbmove_1/command" type="string" />
+        <param name="pos_topic" value="/qbmove_1/position" type="string" />
+  </node>
+-->
+
+</launch>
