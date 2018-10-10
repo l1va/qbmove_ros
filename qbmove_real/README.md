@@ -17,6 +17,7 @@ catkin_make
 ```
 ### How to use:
 Just add next code in your launch file  
+```
   <node name="qb_topics_motor_2" pkg="qb_real" type="qb_topics_motor.py"  output="screen">
 	<param name="id" value="2" type="int" />
 	<param name="command_topic" value="/qbmove_2/command" type="string" />
