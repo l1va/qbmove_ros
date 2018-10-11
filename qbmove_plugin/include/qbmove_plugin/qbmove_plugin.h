@@ -13,8 +13,8 @@
 
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <qbmove_plugin/Position.h>
-#include <qbmove_plugin/Command.h>
+#include <qbmove_msg/Position.h>
+#include <qbmove_msg/Command.h>
 
 /* number of state variables */
 //#define N 2 
@@ -34,7 +34,7 @@ namespace gazebo {
 
         void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf);
 
-        void stiff_pos_Callback(const qbmove_plugin::CommandConstPtr &msg);
+        void stiff_pos_Callback(const qbmove_msg::CommandConstPtr &msg);
 
         void ref_generation(double q_e, double q_d);
 
@@ -153,7 +153,7 @@ namespace gazebo {
         ros::Subscriber sub;
         ros::NodeHandle n;
 
-        qbmove_plugin::Position msg_echo;
+        qbmove_msg::Position msg_echo;
 
         /* Pointer to the update event connection */
         event::ConnectionPtr updateConnection;
