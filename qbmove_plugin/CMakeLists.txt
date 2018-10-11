@@ -14,8 +14,8 @@ find_package(gazebo REQUIRED)
 
 add_message_files(
   FILES
-  Position.msg
-  Command.msg
+#  Position.msg
+#  Command.msg
 )
 
 generate_messages()
