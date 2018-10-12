@@ -25,6 +25,7 @@
 
     <cube name="cube2"/>
 
+    <!-- This is part to insert in your urdf: -->
     <gazebo>
         <plugin name="qbmove_1" filename="libqbmove_plugin.so">
             <joint>cube1_joint</joint>
