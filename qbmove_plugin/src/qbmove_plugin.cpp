@@ -101,14 +101,14 @@ void qbmovePlugin::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf) {
     this->val_motor2 = 0.0;
 
     sub = n.subscribe(command_topic, 1, &qbmovePlugin::stiff_pos_Callback, this);
-    pub = n.advertise<qbmove_plugin::Position>(echo_topic, 500);
+    pub = n.advertise<qbmove_msg::Position>(echo_topic, 500);
 
     this->updateConnection = event::Events::ConnectWorldUpdateBegin(boost::bind(&qbmovePlugin::OnUpdate, this, _1));
 
 }
 
 
-void qbmovePlugin::stiff_pos_Callback(const qbmove_plugin::CommandConstPtr &msg) {
+void qbmovePlugin::stiff_pos_Callback(const qbmove_msg::CommandConstPtr &msg) {
     this->val_motor1 = msg->motor1;
     this->val_motor2 = msg->motor2;
 }
