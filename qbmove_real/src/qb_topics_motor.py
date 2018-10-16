@@ -17,7 +17,7 @@ class QbMoveReal:
         self.init_services()
         a = self.activate_service(self.qb_id, self.max_repeats)  # activate motors at start
         if not a.success:
-            raise Exception('Activation for ' + qb_id + ' motor failed: ' + str(a.failures) + ' ' + a.message)
+	     print ('Activation for ' + str(qb_id) + ' motor failed: ' + str(a.failures) + ' ' + a.message)
 
     def init_services(self):
         rospy.wait_for_service('/communication_handler/activate_motors')

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>qb_real</name>
+  <name>qbmove_real</name>
   <version>0.0.0</version>
   <description>The qb_real package</description>
   <maintainer email="mike.ivanou@gmail.com">Mike Ivanou</maintainer>
