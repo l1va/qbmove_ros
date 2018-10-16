@@ -2,7 +2,7 @@
 <package format="2">
   <name>qbmove_real</name>
   <version>0.0.0</version>
-  <description>The qb_real package</description>
+  <description>The qbmove_real package</description>
   <maintainer email="mike.ivanou@gmail.com">Mike Ivanou</maintainer>
   <license>MIT</license>
   <buildtool_depend>catkin</buildtool_depend>

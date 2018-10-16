@@ -17,7 +17,7 @@ class QbMoveReal:
         self.init_services()
         a = self.activate_service(self.qb_id, self.max_repeats)  # activate motors at start
         if not a.success:
-	     print ('Activation for ' + str(qb_id) + ' motor failed: ' + str(a.failures) + ' ' + a.message)
+            print ('Activation for ' + str(qb_id) + ' motor failed: ' + str(a.failures) + ' ' + a.message)
 
     def init_services(self):
         rospy.wait_for_service('/communication_handler/activate_motors')
@@ -39,6 +39,11 @@ class QbMoveReal:
     def get_position(self):
         return self.get_pos_service(self.qb_id, self.max_repeats, self.get_pos, self.get_cur,
                                     self.get_distinct_packages)
+
+    def deactivate(self):
+        a = self.deactivate_service(self.qb_id, self.max_repeats)
+        if not a.success:
+            print ('Deactivation for ' + str(self.qb_id) + ' motor failed: ' + str(a.failures) + ' ' + a.message)
 
 
 def main():
@@ -65,10 +70,11 @@ def main():
             info.curr_mot_2 = data.currents[1]
             pub.publish(info)
         rate.sleep()
+    qube.deactivate()  # deactivate motors at the end
 
 
 if __name__ == '__main__':
     try:
         main()
-    except rospy.ROSInterruptException:
-        pass
+    except rospy.ROSInterruptException as e:
+        print('ROSInterruption: ' + str(e))

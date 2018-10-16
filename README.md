@@ -11,7 +11,9 @@ easily embedding them in a robot in a Gazebo simulator and control them using RO
 #### Dependencies:
 ROS
 
-[qbmove-ros packages](https://bitbucket.org/qbrobotics/qbmove-ros)
+[qbmove-ros package](https://bitbucket.org/qbrobotics/qbmove-ros)
+
+[qbdevice-ros package](https://bitbucket.org/qbrobotics/qbdevice-ros.git)
 
 To install them:
 ```
